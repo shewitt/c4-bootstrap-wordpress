@@ -11,4 +11,8 @@ a2ensite bootstrap-wordpress
 
 ln -s /etc/nginx/sites-available/bootstrap-wordpress /etc/nginx/sites-enabled/
 
+mkdir -p /mnt/nginx/cache
+mkdir -p /mnt/nginx/proxy
+chown -Rf www-data.www-data /mnt/nginx
+
 /etc/init.d/nginx restart
