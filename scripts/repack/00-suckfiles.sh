@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script pulls in changes in specified working directories and adds them to the local directory structure
 
-working_dirs=( /var/www/ )
+working_dirs=( /var/www/ /etc/apache2/ /etc/nginx/ )
 files_tmp="files/var/tmp/c4-bootstrap"
 timestamp=`date --utc +%s`
 

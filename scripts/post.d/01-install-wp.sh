@@ -4,9 +4,11 @@
 
 DIR="/var/www/"
 
-if [ "$(ls -A ${DIR})" ]; then
-    echo "Site files already present"
+if [ -f /var/tmp/c4-bootstrap/SiteContent.tgz ]; then
+    echo "Restoring old site"
+    tar xvfz /var/tmp/c4-bootstrap/SiteContent.tgz -C /var/www/
 else
+    echo "Installing fresh Wordpress"
     ## Install wget so we can download the latest wordpress
     apt-get install wget
     ## Grab the latest wordpress

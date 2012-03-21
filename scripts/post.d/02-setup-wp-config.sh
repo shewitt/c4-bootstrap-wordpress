@@ -18,6 +18,13 @@ mysqladmin create bootstrapwp
 mysql -e "GRANT ALL PRIVILEGES ON bootstrapwp.* TO bootstrap_user@'localhost' IDENTIFIED by '${passwd}'";
 mysqladmin flush-privileges
 
+## restore old DB if alvailable
+
+if [ -f /var/tmp/sql/00-bootstrap.sql ];
+then
+    mysql -D bootstrapwp < /var/tmp/sql/00-bootstrap.sql
+fi
+
 # Change values of db in config file
 
 sed -i s/database_name_here/bootstrapwp/ /var/www/wordpress/wp-config.php
