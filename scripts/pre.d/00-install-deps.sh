@@ -38,6 +38,10 @@ apt-get -y install pwgen
  echo "mysql-server settings preseeded, now installing via apt-get"
  DEBIAN_FRONTEND=noninteractive apt-get -y install -qq mysql-server
 
+## Fix mysql password for root
+
+mysqladmin -u root password ${password}
+
 sed -i "s/\[client\]/\[client\]\npassword        = ${password}/" /etc/mysql/my.cnf
 
 
