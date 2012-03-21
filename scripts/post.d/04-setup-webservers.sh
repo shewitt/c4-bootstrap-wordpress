@@ -9,6 +9,7 @@ a2ensite bootstrap-wordpress
 
 ## configure nginx
 
+rm /etc/nginx/sites-enabled/*
 ln -s /etc/nginx/sites-available/bootstrap-wordpress /etc/nginx/sites-enabled/
 
 mkdir -p /mnt/nginx/cache

@@ -27,7 +27,7 @@ apt-get install -y nginx
 ## Install MySQL server
 
 echo "installing mysql-server"
-#apt-get -y install -qq mysql-server
+apt-get -y install pwgen
 # Generate a strong password for the mysql service, using /dev/urandom
  password=`pwgen -s 20 1`
 
