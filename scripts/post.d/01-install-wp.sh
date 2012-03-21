@@ -4,9 +4,8 @@
 
 DIR="/var/www/"
 
-if [ -f /var/tmp/c4-bootstrap/SiteContent.tgz ]; then
-    echo "Restoring old site"
-    tar xvfz /var/tmp/c4-bootstrap/SiteContent.tgz -C /var/www/
+if [ -f /var/www/wordpress/wp-config.php ]; then
+    echo "Already Restored old site"
 else
     echo "Installing fresh Wordpress"
     ## Install wget so we can download the latest wordpress
