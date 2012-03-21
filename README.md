@@ -4,7 +4,17 @@ Using the c4-bootstrap system for lightweight system setup c4-bootstrap-wordpres
 
 ## Requirements
 
+You'll need to install:
+
     git-core
+
+You can do this with:
+
+    apt-get update
+    apt-get install git-core
+
+These should be standard:
+
     bash
     tar
     gzip
