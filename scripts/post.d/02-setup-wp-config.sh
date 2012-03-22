@@ -16,7 +16,6 @@ curl https://api.wordpress.org/secret-key/1.1/salt/ >> /var/www/wordpress/wp-con
 
 sed -i s/database_name_here/bootstrapwp/ /var/www/wordpress/wp-config.php
 sed -i s/username_here/bootstrap_user/ /var/www/wordpress/wp-config.php
-sed -i s/password_here/${passwd}/ /var/www/wordpress/wp-config.php
 
 # really nasty hack to fix no permission error if this is not the last line of the config
 echo "@require_once(ABSPATH . 'wp-settings.php');" >> /var/www/wordpress/wp-config.php
@@ -33,6 +32,10 @@ fi
 mysqladmin -u root create bootstrapwp
 mysql -u root -e "GRANT ALL PRIVILEGES ON bootstrapwp.* TO bootstrap_user@'localhost' IDENTIFIED by '${passwd}'";
 mysqladmin -u root flush-privileges
+
+## Set password in config file
+
+sed -i s/password_here/${passwd}/ /var/www/wordpress/wp-config.php
 
 ## restore old DB if alvailable
 
