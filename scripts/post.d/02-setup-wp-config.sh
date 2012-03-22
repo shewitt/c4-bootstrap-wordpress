@@ -30,14 +30,14 @@ fi
 
 # set the db up
 
-mysqladmin create bootstrapwp
-mysql -e "GRANT ALL PRIVILEGES ON bootstrapwp.* TO bootstrap_user@'localhost' IDENTIFIED by '${passwd}'";
-mysqladmin flush-privileges
+mysqladmin -u root create bootstrapwp
+mysql -u root -e "GRANT ALL PRIVILEGES ON bootstrapwp.* TO bootstrap_user@'localhost' IDENTIFIED by '${passwd}'";
+mysqladmin -u root flush-privileges
 
 ## restore old DB if alvailable
 
 if [ -f /var/tmp/sql/00-bootstrapwp.sql ];
 then
-    mysql -D bootstrapwp < /var/tmp/sql/00-bootstrapwp.sql
+    mysql -u root -D bootstrapwp < /var/tmp/sql/00-bootstrapwp.sql
 fi
 
